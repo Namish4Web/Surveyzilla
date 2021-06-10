@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <ul class="nav nav-tabs">
+    <li class="nav-item" onClick="clickIntroduction()">
+      <a class="nav-link" href="#introduction" id="introduction">Introduction</a>
+    </li>
+    <li class="nav-item onClick=" clickPricing()">
+      <a class="nav-link" href="#pricing" id="pricing">Pricing</a>
+    </li>
+    <li class="nav-item onClick=" clickAccount()">
+      <a class="nav-link active bg-primary text-white" href="#account" id="account">Login or register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#powered-by" tabindex="-1" aria-disabled="true">Powered by Surveyzilla</a>
+    </li>
+  </ul>
+  <title>Login with Surveyzilla</title>
+</head>
+
+<body>
+  <form>
+    <div class="form-group">
+      <label for="Email">Email address</label>
+      <input type="email" class="form-control rounded-full bg-white" id="Email" aria-describedby="emailHelp"
+        placeholder="Enter your email address">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="Password">Password</label>
+      <input type="password" class="form-control rounded-full" id="Password" placeholder="Password">
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input rounded-full" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">I'm above 18 years old</label>
+    </div>
+    <button class="btn btn-primary rounded-full text-white" onClick="loginClick()">Login</button>
+
+    <button type="button" class="btn btn-primary rounded-full text-white" onClick="univ()">I'm new to
+      Surveyzilla</button>
+  </form>
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <!-- https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyDET6W0cAAwFr6MSbatkCjnR64Zrz-U340",
+      authDomain: "surveyzilla-4-web.firebaseapp.com",
+      projectId: "surveyzilla-4-web",
+      storageBucket: "surveyzilla-4-web.appspot.com",
+      messagingSenderId: "429966753928",
+      appId: "1:429966753928:web:e37f26836778e98a481f3d",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+</body>
+<script type="text/javascript">
+  function clickIntroduction() {
+    window.location.href = "https://surveyzilla-4-web.web.app/index.html";
+  }
+  function clickPricing() {
+    window.location.href = "https://surveyzilla-4-web.web.app/pricing.html";
+  }
+  function loginClick() {
+    var Email = document.getElementById("Email").value;
+    var Password = document.getElementById("Password").value;
+    firebase.auth().signInWithEmailAndPassword(Email, Password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        alert("Logged in successfully");
+        window.location.href = "https://surveyzilla-4-web.web.app/dashboard.html";
+
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(error);
+        alert(errorMessage);
+      });
+
+  }
+ 
+ function univ() {
+   
+  }
+
+
+</script>
+</body>
+
+</html>
